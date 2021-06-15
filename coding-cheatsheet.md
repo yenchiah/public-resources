@@ -3,7 +3,6 @@
 This is a cheatsheet to improve the quality of life when coding. I only list common used ones. For a complete git cheatsheet, please check [this repository](https://github.com/arslanbilal/git-cheat-sheet).
 
 ### Table of Content
-- [Guidlines](#guidlines)
 - [git operations](#git-operations)
 - [conda operations](#conda-operations)
 - [pip operations](#pip-operations)
