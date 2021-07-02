@@ -3,10 +3,18 @@
 This is a cheatsheet to improve the quality of life when coding. I only list common used ones. For a complete git cheatsheet, please check [this repository](https://github.com/arslanbilal/git-cheat-sheet).
 
 ### Table of Content
+- [Linux operations](#linux-operations)
 - [git operations](#git-operations)
 - [conda operations](#conda-operations)
 - [pip operations](#pip-operations)
 - [postgresql operations](#postgresql-operations)
+
+# <a name="linux-operations"></a>Linux operations
+## Basic Linux operations
+Create a SSH key pair under "~/.ssh".
+```sh
+ssh-keygen -t rsa -b 4096
+```
 
 # <a name="git-operations"></a>git operations
 ## Basic git operations
