@@ -86,6 +86,10 @@ Pop the stashed changes back
 ```sh
 git stash pop
 ```
+Add submodule
+```sh
+git submodule add [REPOSITORY_URL]
+```
 ## Combined git operations
 ### Commit flow
 Commit the changes of files to a branch in the repository
