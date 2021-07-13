@@ -109,7 +109,7 @@ git rebase main
 git pull --rebase
 git push
 ```
-### Merge a remote branch into the current branch and perserve commit history, using the periscope-public-engagement-tool remote main branch as an example
+### Merge a remote branch into the current branch and preserve commit history, using the periscope-public-engagement-tool remote main branch as an example
 ```sh
 git remote add -f periscope-public-engagement-tool https://github.com/TUD-KInD/periscope-public-engagement-tool.git
 git merge periscope-public-engagement-tool/main --allow-unrelated-histories
