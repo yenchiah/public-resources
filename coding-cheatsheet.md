@@ -113,12 +113,22 @@ git rebase main
 git pull --rebase
 git push
 ```
-### Merge a remote branch into the current branch and preserve commit history, using the periscope-public-engagement-tool remote main branch as an example
+### Merge a remote branch into the current branch and preserve commit history, using the periscope-public-engagement-tool remote repository as an example
 ```sh
 git remote add -f periscope-public-engagement-tool https://github.com/TUD-KInD/periscope-public-engagement-tool.git
 git merge periscope-public-engagement-tool/main --allow-unrelated-histories
 git push
 git remote rm periscope-public-engagement-tool
+```
+### Add a remote branch as a [subtree](https://www.atlassian.com/git/tutorials/git-subtree) in the current repository (squash the commit history), using the periscope-public-engagement-tool remote repository as an example
+```sh
+# Initialize the subtree
+git remote add -f periscope-public-engagement-tool https://github.com/TUD-KInD/periscope-public-engagement-tool.git
+git subtree add --prefix periscope-public-engagement-tool periscope-public-engagement-tool main --squash
+
+# Update the subtree
+git fetch periscope-public-engagement-tool main
+git subtree pull --prefix periscope-public-engagement-tool periscope-public-engagement-tool main --squash
 ```
 
 # <a name="conda-operations"></a>conda operations
