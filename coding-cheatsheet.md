@@ -116,7 +116,14 @@ git push
 ### Merge a remote branch into the current branch and preserve commit history, using the periscope-public-engagement-tool remote repository as an example
 ```sh
 git remote add -f periscope-public-engagement-tool https://github.com/TUD-KInD/periscope-public-engagement-tool.git
+
+# If we want to preserve history
 git merge periscope-public-engagement-tool/main --allow-unrelated-histories
+
+# If we want to squash the commits
+git merge periscope-public-engagement-tool/main --allow-unrelated-histories --squash
+git commit
+
 git push
 git remote rm periscope-public-engagement-tool
 ```
