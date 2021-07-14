@@ -125,10 +125,12 @@ git remote rm periscope-public-engagement-tool
 # Initialize the subtree
 git remote add -f periscope-public-engagement-tool https://github.com/TUD-KInD/periscope-public-engagement-tool.git
 git subtree add --prefix periscope-public-engagement-tool periscope-public-engagement-tool main --squash
+git push
 
 # Update the subtree
 git fetch periscope-public-engagement-tool main
 git subtree pull --prefix periscope-public-engagement-tool periscope-public-engagement-tool main --squash
+git push
 ```
 
 # <a name="conda-operations"></a>conda operations
