@@ -123,6 +123,16 @@ git remote rm periscope-public-engagement-tool
 ### Add a remote branch as a [subtree](https://www.atlassian.com/git/tutorials/git-subtree) in the current repository (squash the commit history), using the periscope-public-engagement-tool remote repository as an example
 ```sh
 # Initialize the subtree
+git subtree add --prefix periscope-public-engagement-tool https://github.com/TUD-KInD/periscope-public-engagement-tool.git main --squash
+git push
+
+# Update the subtree
+git subtree pull --prefix periscope-public-engagement-tool https://github.com/TUD-KInD/periscope-public-engagement-tool.git main --squash
+git push
+```
+You can simplify the workflow by adding the sub-repository as a remote:
+```sh
+# Initialize the subtree
 git remote add -f periscope-public-engagement-tool https://github.com/TUD-KInD/periscope-public-engagement-tool.git
 git subtree add --prefix periscope-public-engagement-tool periscope-public-engagement-tool main --squash
 git push
