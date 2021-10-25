@@ -8,6 +8,7 @@ This is a cheatsheet to improve the quality of life when coding. I only list com
 - [conda operations](#conda-operations)
 - [pip operations](#pip-operations)
 - [postgresql operations](#postgresql-operations)
+- [Others](#others)
 
 # <a name="linux-operations"></a>Linux operations
 ## Basic Linux operations
@@ -235,4 +236,51 @@ sudo systemctl restart postgresql
 Stop the postgresql
 ```sh
 sudo systemctl stop postgresql
+```
+
+# <a name="others"></a>Others
+Set the style of the vim editor
+```
+vim Style
+cat ~/.vimrc
+
+:color desert
+syntax on
+set showmatch
+set expandtab
+set softtabstop=2
+set shiftwidth=2
+set autoindent
+set number
+filetype indent plugin on
+set pastetoggle=<F12>
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+vmap <leader>y :w! /tmp/vitmp<CR>
+nmap <leader>p :r! cat /tmp/vitmp<CR>
+autocmd BufWritePre *.py %s/\s\+$//e
+```
+Set the style of inputrc
+```
+cat ~/.inputrc
+
+"\e[B": history-search-forward
+"\e[A": history-search-backward
+```
+Set the terminal style
+```
+# For mac:
+cat ~/.bash_profile
+
+# For ubuntu:
+cat ~/.profile
+
+# Add color in terminal
+export CLICOLOR=1
+export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
+export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export PATH="/usr/local/miniconda3/bin:$PATH"
+. /usr/local/miniconda3/etc/profile.d/conda.sh
+export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/opt/openssl/lib/"
 ```
