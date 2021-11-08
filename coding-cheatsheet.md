@@ -91,6 +91,10 @@ Add submodule
 ```sh
 git submodule add [REPOSITORY_URL]
 ```
+Edit the local repository config
+```sh
+git config -e --local
+```
 ## Combined git operations
 ### Commit flow
 Commit the changes of files to a branch in the repository
