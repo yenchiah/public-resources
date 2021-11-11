@@ -67,6 +67,10 @@ Switch to a specific branch
 ```sh
 git checkout [BRANCH_NAME]
 ```
+Revert the changes of the file to the HEAD
+```sh
+git checkout HEAD [FILE_NAME]
+```
 Delete a local branch
 ```sh
 git branch -D [BRANCH_NAME]
