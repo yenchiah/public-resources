@@ -12,9 +12,13 @@ This is a cheatsheet to improve the quality of life when coding. I only list com
 
 # <a name="linux-operations"></a>Linux operations
 ## Basic Linux operations
-Create a SSH key pair under "~/.ssh".
+Create a SSH key pair under "~/.ssh"
 ```sh
 ssh-keygen -t rsa -b 4096
+```
+Unzip a tar file
+```sh
+tar -xzvf [FILE_NAME]
 ```
 
 # <a name="git-operations"></a>git operations
