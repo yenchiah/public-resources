@@ -20,6 +20,11 @@ Unzip a tar file
 ```sh
 tar -xzvf [FILE_NAME]
 ```
+Zip a file or folder with password
+```sh
+zip -e archivename.zip filetoprotect
+zip -er archivename.zip foldertoprotect
+```
 
 # <a name="git-operations"></a>git operations
 ## Basic git operations
