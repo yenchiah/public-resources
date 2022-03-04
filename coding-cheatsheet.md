@@ -108,6 +108,10 @@ Edit the local repository config
 ```sh
 git config -e --local
 ```
+Hide ^M symbol at the end of line in git diff
+```
+git config --global core.whitespace cr-at-eol
+```
 ## Combined git operations
 ### Commit flow
 Commit the changes of files to a branch in the repository
