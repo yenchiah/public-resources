@@ -14,7 +14,6 @@ This is a cheatsheet to improve the quality of life when coding. I only list com
 ## Basic Linux operations
 Create a SSH key pair under "~/.ssh"
 ```sh
-ssh-keygen -t rsa -b 4096
 ssh-keygen -t rsa -b 4096 -C "your_email@youremail.com"
 ```
 Unzip a tar file
