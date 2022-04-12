@@ -12,9 +12,10 @@ This is a cheatsheet to improve the quality of life when coding. I only list com
 
 # <a name="linux-operations"></a>Linux operations
 ## Basic Linux operations
-Create a SSH key pair under "~/.ssh"
+Create a SSH key pair under "~/.ssh" and add the key
 ```sh
 ssh-keygen -t rsa -b 4096 -C "your_email@youremail.com"
+ssh-add ~/.ssh/id_rsa
 ```
 Unzip a tar file
 ```sh
