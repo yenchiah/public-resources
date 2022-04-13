@@ -17,7 +17,7 @@ Create a SSH key pair under "~/.ssh" and add the key
 ssh-keygen -t rsa -b 4096 -C "your_email@youremail.com"
 ssh-add ~/.ssh/id_rsa
 ```
-If ssh-add does not work, run the following link:
+If ssh-add does not work, run the following line before running ssh-add:
 ```sh
 ssh-agent bash
 ```
