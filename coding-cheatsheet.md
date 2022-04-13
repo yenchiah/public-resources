@@ -17,6 +17,10 @@ Create a SSH key pair under "~/.ssh" and add the key
 ssh-keygen -t rsa -b 4096 -C "your_email@youremail.com"
 ssh-add ~/.ssh/id_rsa
 ```
+If ssh-add does not work, run the following link:
+```sh
+ssh-agent bash
+```
 Unzip a tar file
 ```sh
 tar -xzvf [FILE_NAME]
