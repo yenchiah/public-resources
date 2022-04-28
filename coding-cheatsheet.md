@@ -30,6 +30,14 @@ Zip a file or folder with password
 zip -e archivename.zip filetoprotect
 zip -er archivename.zip foldertoprotect
 ```
+Get the total size of a folder with name "video"
+```sh
+du -sh videos/
+```
+Show disk usage
+```sh
+df -h
+```
 
 # <a name="git-operations"></a>git operations
 ## Basic git operations
