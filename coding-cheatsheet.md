@@ -14,7 +14,7 @@ This is a cheatsheet to improve the quality of life when coding. I only list com
 ## Basic Linux operations
 Create a SSH key pair under "~/.ssh" and add the key
 ```sh
-ssh-keygen -t rsa -b 4096 -C "your_email@youremail.com"
+ssh-keygen -t rsa -b 4096 -C "your_email@youremail.com" -f id_rsa
 ssh-add ~/.ssh/id_rsa
 ```
 If ssh-add does not work, run the following line before running ssh-add:
