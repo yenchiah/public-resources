@@ -11,7 +11,7 @@ This is a cheatsheet to improve the quality of life when coding. I only list com
   - [Basic git operations](#basic-git-operations)
   - [Combined git operations](#combined-git-operations)
 - [conda operations](#conda-operations)
-  - - [Basic conda operations](#basic-conda-operations)
+  - [Basic conda operations](#basic-conda-operations)
 - [pip operations](#pip-operations)
 - [postgresql operations](#postgresql-operations)
 
