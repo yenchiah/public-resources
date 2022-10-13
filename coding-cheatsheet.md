@@ -38,6 +38,52 @@ Show disk usage
 ```sh
 df -h
 ```
+## Partition and Mount Disks
+First need to get the drive path (e.g., /dev/sda, /dev/sdb, /dev/sdc).
+```
+sudo fdisk -l
+```
+Then, partition the drive. Here we use "/dev/sdb" as an example.
+```
+sudo parted /dev/sdb
+```
+Now run the following inside the parted shell. Command "mklabel gpt" means creating the GUID Partition Table. Command "mkpart primary 0% 100%" means creating a partition that uses the entire drive. You can specify the disk size, for example, by using "mkpart primary 0TB 4TB".
+```
+mklabel gpt # the GUID Partition Table 
+unit TB
+mkpart primary 0% 100%
+print
+quit
+```
+Next run the following to check the exact drive path (e.g., /dev/sdb1, /dev/sdb2)
+```
+sudo fdisk -l
+```
+Run the following to mount the disk drive partition. Here we use an example to mount "/dev/sdb1" to "/workspace".
+```
+sudo mkdir /workspace
+sudo mkfs -t ext4 /dev/sdb1
+sudo mount /dev/sdb1 /workspace
+```
+Now run the following to check if the disk partition is there, and reboot the machine. It is very important to reboot the machine, as we will need the drive's UUID later. Without rebooting, the UUID can be wrong.
+```
+df -h
+sudo reboot now
+```
+After rebooting, run the following to get the partition's UUID (using /dev/sdb1 as the example).
+```
+blkid /dev/sdb1
+```
+Finally, we need to put the disk partition information in fstab. See [here](https://wiki.archlinux.org/title/fstab) for the fstab documentation.
+```
+sudo vim /etc/fstab
+
+# Add the following to the file
+UUID=[uuid] /workspace ext4 defaults,noatime 0 0
+
+# Below is an example
+# UUID=849hyr87-j83y-89jd-3j7s-89jyh3gtd70v /workspace ext4 defaults,noatime 0 0
+```
 
 # <a name="git-operations"></a>git operations
 ## Basic git operations
