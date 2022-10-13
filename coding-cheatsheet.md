@@ -11,6 +11,7 @@ This is a cheatsheet to improve the quality of life when coding. I only list com
   - [Basic git operations](#basic-git-operations)
   - [Combined git operations](#combined-git-operations)
 - [conda operations](#conda-operations)
+  - - [Basic conda operations](#basic-conda-operations)
 - [pip operations](#pip-operations)
 - [postgresql operations](#postgresql-operations)
 
@@ -267,6 +268,8 @@ git push
 ```
 
 # <a name="conda-operations"></a>conda operations
+Document for managing conda environments can be found [here](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
+## <a name="basic-conda-operations"></a>Basic conda operations
 Activate an environment
 ```sh
 conda activate [ENVIRONMENT_NAME]
