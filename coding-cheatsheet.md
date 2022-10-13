@@ -44,15 +44,15 @@ df -h
 ```
 ## <a name="partition-and-mount-disks"></a>Partition and mount disks
 First need to get the drive path (e.g., /dev/sda, /dev/sdb, /dev/sdc).
-```
+```sh
 sudo fdisk -l
 ```
 Then, partition the drive. Here we use "/dev/sdb" as an example.
-```
+```sh
 sudo parted /dev/sdb
 ```
 Now run the following inside the parted shell. Command "mklabel gpt" means creating the GUID Partition Table. Command "mkpart primary 0% 100%" means creating a partition that uses the entire drive. You can specify the disk size, for example, by using "mkpart primary 0TB 4TB".
-```
+```sh
 mklabel gpt # the GUID Partition Table 
 unit TB
 mkpart primary 0% 100%
@@ -60,26 +60,26 @@ print
 quit
 ```
 Next run the following to check the exact drive path (e.g., /dev/sdb1, /dev/sdb2)
-```
+```sh
 sudo fdisk -l
 ```
 Run the following to mount the disk drive partition. Here we use an example to mount "/dev/sdb1" to "/workspace".
-```
+```sh
 sudo mkdir /workspace
 sudo mkfs -t ext4 /dev/sdb1
 sudo mount /dev/sdb1 /workspace
 ```
 Now run the following to check if the disk partition is there, and reboot the machine. It is very important to reboot the machine, as we will need the drive's UUID later. Without rebooting, the UUID can be wrong.
-```
+```sh
 df -h
 sudo reboot now
 ```
 After rebooting, run the following to get the partition's UUID (using /dev/sdb1 as the example).
-```
+```sh
 blkid /dev/sdb1
 ```
 Finally, we need to put the disk partition information in fstab. See [here](https://wiki.archlinux.org/title/fstab) for the fstab documentation.
-```
+```sh
 sudo vim /etc/fstab
 
 # Add the following to the file
@@ -89,13 +89,13 @@ UUID=[uuid] /workspace ext4 defaults,noatime 0 0
 # UUID=849hyr87-j83y-89jd-3j7s-89jyh3gtd70v /workspace ext4 defaults,noatime 0 0
 ```
 To check if it is working, reboot the system and check the disk status (in this example, "/workspace" should exist after rebooting).
-```
+```sh
 sudo reboot now
 df -h
 ```
 ## <a name="fix-improper-lvm-partitions"></a>Fix improper LVM partitions
 Sometimes the LVM partitions may not use the entire available disk space, and we want to fix this. The solution is obtained from [this link](https://askubuntu.com/questions/1106795/ubuntu-server-18-04-lvm-out-of-space-with-improper-default-partitioning).
-```
+```sh
 # We need to resize the logical volume to use all the existing and free space of the volume group
 $ lvm
 lvm> lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
@@ -294,6 +294,18 @@ conda env remove -n [ENVIRONMENT_NAME]
 Remove a conda package from an environment
 ```sh
 conda remove -n [ENVIRONMENT_NAME] [PACKAGE_NAME]
+```
+Export the environment
+```sh
+conda env export > environment.yml
+```
+Create an environment from "environment.yml"
+```sh
+conda env create -f environment.yml
+```
+To update an environment, edit the contents of "environment.yml" file accordingly and then run the following command
+```sh
+conda env update --prefix ./env --file environment.yml  --prune
 ```
 
 # <a name="pip-operations"></a>pip operations
