@@ -38,7 +38,7 @@ Show disk usage
 ```sh
 df -h
 ```
-## Partition and Mount Disks
+## Partition and mount disks
 First need to get the drive path (e.g., /dev/sda, /dev/sdb, /dev/sdc).
 ```
 sudo fdisk -l
@@ -88,6 +88,28 @@ To check if it is working, reboot the system and check the disk status (in this 
 ```
 sudo reboot now
 df -h
+```
+### Fix improper LVM partitions that do not use the full disk
+The solution is obtained from [this link](https://askubuntu.com/questions/1106795/ubuntu-server-18-04-lvm-out-of-space-with-improper-default-partitioning).
+```
+# We need to resize the logical volume to use all the existing and free space of the volume group
+$ lvm
+lvm> lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
+lvm> exit
+
+# And then, we need to resize the file system to use the new available space in the logical volume
+$ resize2fs /dev/ubuntu-vg/ubuntu-lv
+resize2fs 1.44.1 (24-Mar-2018)
+Filesystem at /dev/ubuntu-vg/ubuntu-lv is mounted on /; on-line resizing required
+old_desc_blocks = 1, new_desc_blocks = 58
+The filesystem on /dev/ubuntu-vg/ubuntu-lv is now 120784896 (4k) blocks long.
+
+# Finally, you can check that you now have available space:
+$ df -h
+Filesystem                         Size  Used Avail Use% Mounted on
+udev                               3.9G     0  3.9G   0% /dev
+tmpfs                              786M  1.2M  785M   1% /run
+/dev/mapper/ubuntu--vg-ubuntu--lv  454G  3.8G  432G   1% /
 ```
 
 # <a name="git-operations"></a>git operations
