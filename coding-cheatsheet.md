@@ -4,14 +4,18 @@ This is a cheatsheet to improve the quality of life when coding. I only list com
 
 ### Table of Content
 - [Linux operations](#linux-operations)
+  - [Basic Linux operations](#basic-linux-operations)
+  - [Partition and mount disks](#partition-and-mount-disks)
+  - [Fix improper LVM partitions](#fix-improper-lvm-partitions)
 - [git operations](#git-operations)
+  - [Basic git operations](#basic-git-operations)
+  - [Combined git operations](#combined-git-operations)
 - [conda operations](#conda-operations)
 - [pip operations](#pip-operations)
 - [postgresql operations](#postgresql-operations)
-- [Others](#others)
 
 # <a name="linux-operations"></a>Linux operations
-## Basic Linux operations
+## <a name="basic-linux-operations"></a>Basic Linux operations
 Create a SSH key pair under "~/.ssh" and add the key
 ```sh
 ssh-keygen -t rsa -b 4096 -C "your_email@youremail.com"
@@ -38,7 +42,7 @@ Show disk usage
 ```sh
 df -h
 ```
-## Partition and mount disks
+## <a name="partition-and-mount-disks"></a>Partition and mount disks
 First need to get the drive path (e.g., /dev/sda, /dev/sdb, /dev/sdc).
 ```
 sudo fdisk -l
@@ -89,8 +93,8 @@ To check if it is working, reboot the system and check the disk status (in this 
 sudo reboot now
 df -h
 ```
-### Fix improper LVM partitions that do not use the full disk
-The solution is obtained from [this link](https://askubuntu.com/questions/1106795/ubuntu-server-18-04-lvm-out-of-space-with-improper-default-partitioning).
+## <a name="fix-improper-lvm-partitions"></a>Fix improper LVM partitions
+Sometimes the LVM partitions may not use the entire available disk space, and we want to fix this. The solution is obtained from [this link](https://askubuntu.com/questions/1106795/ubuntu-server-18-04-lvm-out-of-space-with-improper-default-partitioning).
 ```
 # We need to resize the logical volume to use all the existing and free space of the volume group
 $ lvm
@@ -113,7 +117,7 @@ tmpfs                              786M  1.2M  785M   1% /run
 ```
 
 # <a name="git-operations"></a>git operations
-## Basic git operations
+## <a name="basic-git-operations"></a>Basic git operations
 Clone a repository with all submodules:
 ```sh
 git clone --recursive [REPOSITORY_URL]
@@ -202,7 +206,7 @@ Configure Git to ensure line endings in files you checkout are correct for macOS
 ```
 git config --global core.autocrlf input
 ```
-## Combined git operations
+## <a name="combined-git-operations"></a>Combined git operations
 ### Commit flow
 Commit the changes of files to a branch in the repository
 ```sh
@@ -347,51 +351,4 @@ sudo systemctl restart postgresql
 Stop the postgresql
 ```sh
 sudo systemctl stop postgresql
-```
-
-# <a name="others"></a>Others
-Set the style of the vim editor
-```
-vim Style
-cat ~/.vimrc
-
-:color desert
-syntax on
-set showmatch
-set expandtab
-set softtabstop=2
-set shiftwidth=2
-set autoindent
-set number
-filetype indent plugin on
-set pastetoggle=<F12>
-filetype plugin on
-set omnifunc=syntaxcomplete#Complete
-vmap <leader>y :w! /tmp/vitmp<CR>
-nmap <leader>p :r! cat /tmp/vitmp<CR>
-autocmd BufWritePre *.py %s/\s\+$//e
-```
-Set the style of inputrc
-```
-cat ~/.inputrc
-
-"\e[B": history-search-forward
-"\e[A": history-search-backward
-```
-Set the terminal style
-```
-# For mac:
-cat ~/.bash_profile
-
-# For ubuntu:
-cat ~/.profile
-
-# Add color in terminal
-export CLICOLOR=1
-export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
-export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-export PATH="/usr/local/miniconda3/bin:$PATH"
-. /usr/local/miniconda3/etc/profile.d/conda.sh
-export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/opt/openssl/lib/"
 ```
