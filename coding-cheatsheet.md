@@ -84,6 +84,11 @@ UUID=[uuid] /workspace ext4 defaults,noatime 0 0
 # Below is an example
 # UUID=849hyr87-j83y-89jd-3j7s-89jyh3gtd70v /workspace ext4 defaults,noatime 0 0
 ```
+To check if it is working, reboot the system and check the disk status (in this example, "/workspace" should exist after rebooting).
+```
+sudo reboot now
+df -h
+```
 
 # <a name="git-operations"></a>git operations
 ## Basic git operations
