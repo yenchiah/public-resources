@@ -17,6 +17,10 @@ This is a cheatsheet to improve the quality of life when coding. I only list com
 
 # <a name="linux-operations"></a>Linux operations
 ## <a name="basic-linux-operations"></a>Basic Linux operations
+Count number of files in a directory
+```sh
+ls -1 | wc -l
+```
 Create a SSH key pair under "~/.ssh" and add the key
 ```sh
 ssh-keygen -t rsa -b 4096 -C "your_email@youremail.com"
