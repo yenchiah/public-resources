@@ -17,6 +17,16 @@ This is a cheatsheet to improve the quality of life when coding. I only list com
 
 # <a name="linux-operations"></a>Linux operations
 ## <a name="basic-linux-operations"></a>Basic Linux operations
+Add new user on a machine, set a default password for the user, and force the user to set a new password
+```sh
+sudo useradd [USERNAME]
+sudo passwd [USERNAME]
+sudo passwd --expire [USERNAME]
+```
+Give sudo permission to an user
+```sh
+sudo usermod -aG sudo [USERNAME]
+```
 Count number of files in a directory
 ```sh
 ls -1 | wc -l
