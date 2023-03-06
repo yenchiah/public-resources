@@ -207,7 +207,8 @@ git stash pop
 ```
 Add submodule
 ```sh
-git submodule add [REPOSITORY_URL]
+git rm --cached -r [FOLDER_NAME]
+git submodule add [REPOSITORY_URL] [FOLDER_NAME]
 ```
 Edit the local repository config
 ```sh
