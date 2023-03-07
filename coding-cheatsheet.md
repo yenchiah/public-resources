@@ -133,9 +133,13 @@ tmpfs                              786M  1.2M  785M   1% /run
 
 # <a name="git-operations"></a>git operations
 ## <a name="basic-git-operations"></a>Basic git operations
-Clone a repository with all submodules:
+Clone a repository with all submodules
 ```sh
 git clone --recursive [REPOSITORY_URL]
+```
+Pull latest changes and all the submodules
+```sh
+git pull --recurse-submodules
 ```
 Check status
 ```sh
