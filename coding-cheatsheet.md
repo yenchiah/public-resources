@@ -31,6 +31,11 @@ Count number of files in a directory
 ```sh
 ls -1 | wc -l
 ```
+Count number of files in a folder recursively
+```sh
+find . -type f | wc -l
+find [DIR_NAME] -type f | wc -l
+```
 Create a SSH key pair under "~/.ssh" and add the key
 ```sh
 ssh-keygen -t rsa -b 4096 -C "your_email@youremail.com"
