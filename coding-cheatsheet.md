@@ -45,6 +45,10 @@ If ssh-add does not work, run the following line before running ssh-add:
 ```sh
 ssh-agent bash
 ```
+Zip a file using tar
+```sh
+tar -cvzf a.tgz [FOLDER_NAME]
+```
 Unzip a tar file
 ```sh
 tar -xzvf [FILE_NAME]
