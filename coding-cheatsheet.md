@@ -403,6 +403,7 @@ Re-encode videos using H.264 format so that the videos can be played on browsers
 ffmpeg -i input.mp4 -c:v libx264 -crf 18 -preset slow -c:a copy output.mp4
 ```
 A shell script to re-encode all videos with the ".mp4" file extension in all subfolders of the current folder.
+Only the videos that are not encoded in H.264 will be processed.
 ```sh
 #!/bin/bash
 
@@ -412,9 +413,15 @@ folder="."
 # Use 'find' to locate all .mp4 files in subfolders and process each one
 find "$folder" -type f -name "*.mp4" -exec sh -c '
   for file do
-    output="${file%.*}_processed.mp4"  # Temporary output filename
-    ffmpeg -i "$file" -c:v libx264 -crf 18 -preset slow -c:a copy "$output"
-    mv "$output" "$file"  # Rename and replace the original file
+    # Use ffprobe to check the video codec
+    codec=$(ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of csv=p=0 "$file")
+
+    # Check if the codec is not h264
+    if [ "$codec" != "h264" ]; then
+      output="${file%.*}_processed.mp4"  # Temporary output filename
+      ffmpeg -i "$file" -c:v libx264 -crf 18 -preset slow -c:a copy "$output"
+      mv "$output" "$file"  # Rename and replace the original file
+    fi
   done
 ' sh {} +
 ```
