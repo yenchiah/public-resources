@@ -14,6 +14,7 @@ This is a cheatsheet to improve the quality of life when coding. I only list com
   - [Basic conda operations](#basic-conda-operations)
 - [pip operations](#pip-operations)
 - [postgresql operations](#postgresql-operations)
+- [ffmpeg operations](#ffmpeg-operations)
 
 # <a name="linux-operations"></a>Linux operations
 ## <a name="basic-linux-operations"></a>Basic Linux operations
@@ -394,4 +395,26 @@ sudo systemctl restart postgresql
 Stop the postgresql
 ```sh
 sudo systemctl stop postgresql
+```
+
+# <a name="ffmpeg-operations"></a>ffmpeg operations
+Re-encode videos using H.264 format so that the videos can be played on browsers.
+```sh
+ffmpeg -i input.mp4 -c:v libx264 -crf 18 -preset slow -c:a copy output.mp4
+```
+A shell script to re-encode all videos with the ".mp4" file extension in all subfolders of the current folder.
+```sh
+#!/bin/bash
+
+# Define the folder where you want to process .mp4 files
+folder="."
+
+# Use 'find' to locate all .mp4 files in subfolders and process each one
+find "$folder" -type f -name "*.mp4" -exec sh -c '
+  for file do
+    output="${file%.*}_processed.mp4"  # Temporary output filename
+    ffmpeg -i "$file" -c:v libx264 -crf 18 -preset slow -c:a copy "$output"
+    mv "$output" "$file"  # Rename and replace the original file
+  done
+' sh {} +
 ```
