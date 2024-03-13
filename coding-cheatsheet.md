@@ -140,6 +140,20 @@ udev                               3.9G     0  3.9G   0% /dev
 tmpfs                              786M  1.2M  785M   1% /run
 /dev/mapper/ubuntu--vg-ubuntu--lv  454G  3.8G  432G   1% /
 ```
+## <a name="ramdisk"></a>Create a ramdisk with 20G
+First, create ramdisk.
+```
+sudo mkdir -p /mnt/ramdisk1
+sudo mount -t tmpfs -o size=20G tmpfs /mnt/ramdisk1
+```
+Then, add informtion to the fstab.
+```sh
+sudo vim /etc/fstab
+
+# Add the following to the file
+# ramdisk for breathecams
+tmpfs  /mnt/ramdisk1  tmpfs  rw,size=20G  0   0
+```
 
 # <a name="git-operations"></a>git operations
 ## <a name="basic-git-operations"></a>Basic git operations
