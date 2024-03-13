@@ -7,6 +7,7 @@ This is a cheatsheet to improve the quality of life when coding. I only list com
   - [Basic Linux operations](#basic-linux-operations)
   - [Partition and mount disks](#partition-and-mount-disks)
   - [Fix improper LVM partitions](#fix-improper-lvm-partitions)
+  - [Create a ramdisk with 20G](#ramdisk)
 - [git operations](#git-operations)
   - [Basic git operations](#basic-git-operations)
   - [Combined git operations](#combined-git-operations)
@@ -142,7 +143,7 @@ tmpfs                              786M  1.2M  785M   1% /run
 ```
 ## <a name="ramdisk"></a>Create a ramdisk with 20G
 First, create ramdisk.
-```
+```sh
 sudo mkdir -p /mnt/ramdisk1
 sudo mount -t tmpfs -o size=20G tmpfs /mnt/ramdisk1
 ```
@@ -153,6 +154,10 @@ sudo vim /etc/fstab
 # Add the following to the file
 # ramdisk for breathecams
 tmpfs  /mnt/ramdisk1  tmpfs  rw,size=20G  0   0
+```
+After that, run the following to mount the ramdisk without rebooting the machine.
+```sh
+sudo mount /mnt/ramdisk1
 ```
 
 # <a name="git-operations"></a>git operations
