@@ -8,6 +8,7 @@ This is a cheatsheet to improve the quality of life when coding. I only list com
   - [Partition and mount disks](#partition-and-mount-disks)
   - [Fix improper LVM partitions](#fix-improper-lvm-partitions)
   - [Create a ramdisk with 20G](#ramdisk)
+  - [Add a new user](add-user)
 - [git operations](#git-operations)
   - [Basic git operations](#basic-git-operations)
   - [Combined git operations](#combined-git-operations)
@@ -19,12 +20,6 @@ This is a cheatsheet to improve the quality of life when coding. I only list com
 
 # <a name="linux-operations"></a>Linux operations
 ## <a name="basic-linux-operations"></a>Basic Linux operations
-Add new user on a machine, set a default password for the user, and force the user to set a new password
-```sh
-sudo useradd [USERNAME]
-sudo passwd [USERNAME]
-sudo passwd --expire [USERNAME]
-```
 Give sudo permission to an user
 ```sh
 sudo usermod -aG sudo [USERNAME]
@@ -158,6 +153,18 @@ tmpfs  /mnt/ramdisk1  tmpfs  rw,size=20G  0   0
 After that, run the following to mount the ramdisk without rebooting the machine.
 ```sh
 sudo mount /mnt/ramdisk1
+```
+## <a name="add-user"></a>Add a new user
+Add new user on a machine, set a default password for the user, force the user to set a new password, create the home directory for the user, and set the default shell for the user to bash.
+```sh
+sudo useradd USERNAME
+sudo passwd USERNAME
+sudo passwd --expire USERNAME
+cd /home/
+sudo mkdir USERNAME
+sudo chown -R USERNAME USERNAME
+sudo chgrp -R USERNAME USERNAME
+sudo usermod -s /bin/bash USERNAME
 ```
 
 # <a name="git-operations"></a>git operations
