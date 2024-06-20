@@ -8,7 +8,7 @@ This is a cheatsheet to improve the quality of life when coding. I only list com
   - [Partition and mount disks](#partition-and-mount-disks)
   - [Fix improper LVM partitions](#fix-improper-lvm-partitions)
   - [Create a ramdisk with 20G](#ramdisk)
-  - [Add a new user](add-user)
+  - [Add a new user](#add-user)
 - [git operations](#git-operations)
   - [Basic git operations](#basic-git-operations)
   - [Combined git operations](#combined-git-operations)
