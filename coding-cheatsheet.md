@@ -20,6 +20,10 @@ This is a cheatsheet to improve the quality of life when coding. I only list com
 
 # <a name="linux-operations"></a>Linux operations
 ## <a name="basic-linux-operations"></a>Basic Linux operations
+Count number of files in a directory
+```sh
+find DIR_NAME -type f | wc -l
+```
 Give sudo permission to an user
 ```sh
 sudo usermod -aG sudo [USERNAME]
