@@ -267,6 +267,11 @@ Configure Git to ensure line endings in files you checkout are correct for macOS
 git config --global core.autocrlf input
 ```
 ## <a name="combined-git-operations"></a>Combined git operations
+### Problem fix
+If `git push` is pending for a long time, try the following solution to increase the postBuffer size and then push again.
+```sh
+git config --global http.postBuffer 5M
+```
 ### Commit flow
 Commit the changes of files to a branch in the repository
 ```sh
