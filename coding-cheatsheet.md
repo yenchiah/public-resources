@@ -35,7 +35,12 @@ ls -1 | wc -l
 Count number of files in a folder recursively
 ```sh
 find . -type f | wc -l
-find [DIR_NAME] -type f | wc -l
+find DIR_NAME -type f | wc -l
+```
+Count number of files with a specific name in a folder recursively
+```sh
+find . -type f -name "NAME.png" | wc -l
+find DIR_NAME -type f -name "NAME.png" | wc -l
 ```
 Create a SSH key pair under "~/.ssh" and add the key
 ```sh
