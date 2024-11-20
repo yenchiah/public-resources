@@ -20,27 +20,29 @@ This is a cheatsheet to improve the quality of life when coding. I only list com
 
 # <a name="linux-operations"></a>Linux operations
 ## <a name="basic-linux-operations"></a>Basic Linux operations
-Count number of files in a directory
+Count the number of files with a specific name in a folder recursively
 ```sh
+# Count the number of all files and directories in the current directory
+ls -1 | wc -l
+
+# Count the number of all files in the current directory recursively
+find . -type f | wc -l
+
+# Count the number of all files in the DIR_NAME directory recursively
 find DIR_NAME -type f | wc -l
+
+# Count number of files with a specific file name "NAME.png" in the current folder recursively
+find . -type f -name "NAME.png" | wc -l
+
+# Count number of files with a specific file extension in the current folder recursively
+find . -type f -name "*.png" | wc -l
+
+# Count number of files with a specific file extension in the DIR_NAME folder recursively
+find DIR_NAME -type f -name "*.png" | wc -l
 ```
 Give sudo permission to an user
 ```sh
 sudo usermod -aG sudo [USERNAME]
-```
-Count number of files in a directory
-```sh
-ls -1 | wc -l
-```
-Count number of files in a folder recursively
-```sh
-find . -type f | wc -l
-find DIR_NAME -type f | wc -l
-```
-Count number of files with a specific name in a folder recursively
-```sh
-find . -type f -name "NAME.png" | wc -l
-find DIR_NAME -type f -name "NAME.png" | wc -l
 ```
 Create a SSH key pair under "~/.ssh" and add the key
 ```sh
