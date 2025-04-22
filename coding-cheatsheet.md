@@ -20,6 +20,10 @@ This is a cheatsheet to improve the quality of life when coding. I only list com
 
 # <a name="linux-operations"></a>Linux operations
 ## <a name="basic-linux-operations"></a>Basic Linux operations
+Check NVIDIA cuda installabtion
+```sh
+nvcc --version
+```
 Count the number of files with a specific name in a folder recursively
 ```sh
 # Count the number of all files and directories in the current directory
