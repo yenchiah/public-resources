@@ -7,6 +7,7 @@ This is a cheatsheet to improve the quality of life when coding. I only list com
   - [Basic Linux operations](#basic-linux-operations)
   - [Partition and mount disks](#partition-and-mount-disks)
   - [Fix improper LVM partitions](#fix-improper-lvm-partitions)
+  - [Extend disk space](#extend-disk-space)
   - [Create a ramdisk with 20G](#ramdisk)
   - [Add a new user](#add-user)
 - [git operations](#git-operations)
@@ -150,6 +151,51 @@ Filesystem                         Size  Used Avail Use% Mounted on
 udev                               3.9G     0  3.9G   0% /dev
 tmpfs                              786M  1.2M  785M   1% /run
 /dev/mapper/ubuntu--vg-ubuntu--lv  454G  3.8G  432G   1% /
+```
+## <a name="extend-disk-space"></a>Extend disk space
+The commands are borrowed from [this link](https://www.transip.eu/knowledgebase/280-expanding-big-storage-linux-vps#Expanding-the-disk-of-your-VPS). 
+First, we need to use `parted` to get the extra partition that is available on the disk.
+Replace the `/dev/vdb` thing with the disk that you want to extend.
+You can use `df -h` to check the disk.
+```sh
+sudo parted /dev/vdb
+```
+Now run the following inside the parted shell.
+```sh
+print
+```
+You will see a warning as shown below. Type 'Fix' to automatically correct this.
+```sh
+Warning: Not all of the space available to /dev/vdb appears to be used, you can fix the GPT to use all of the space (an extra 4294967296 blocks) or continue with the current
+setting? 
+Fix/Ignore? Fix
+```
+Then, you will see output similar to the following.
+```sh
+Model: Virtio Block Device (virtblk)
+Disk /dev/vdb: 4398GB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags: 
+
+Number  Start   End     Size    File system  Name     Flags
+ 1      1049kB  2199GB  2199GB  ext4         primary
+```
+Next, enlarge the partition with the following command (1 is the number of the partition you want to expand).
+```sh
+resizepart 1
+```
+You will then be asked where the partition should end, and here you enter the desired (maximum) value of your disk. In this example, 4398GB (the amount when you use the `print` command in the parted shell).
+```sh
+End? (2199GB)? 4398GB
+```
+Next, quit the parted shell.
+```sh
+quit
+```
+Finally, use the `resize2fs` command to resize the file system properly.
+```
+resize2fs /dev/vdb1
 ```
 ## <a name="ramdisk"></a>Create a ramdisk with 20G
 First, create ramdisk.
